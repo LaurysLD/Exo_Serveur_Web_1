@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Accueil - Serveur Web</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <img src="{{ url_for('static', filename='Logo.png') }}" alt="Logo" class="logo" />
+      <h1>Exo Serveur Web</h1>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <h2>Bienvenue</h2>
+        <p>Inscris-toi ou connecte-toi pour accéder aux fonctionnalités.</p>
+        <div class="actions">
+          <form method="get" action="{{ url_for('main.register') }}">
+            <button class="btn" type="submit">S'inscrire</button>
+          </form>
+          <form method="get" action="{{ url_for('main.login') }}">
+            <button class="btn" type="submit">Se connecter</button>
+          </form>
+          {% if user %}
+            <form method="get" action="{{ url_for('main.items') }}">
+              <button class="btn" type="submit">Accéder aux éléments</button>
+            </form>
+            <form method="post" action="{{ url_for('main.logout') }}">
+              <button class="btn" type="submit">Se déconnecter</button>
+            </form>
+          {% endif %}
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

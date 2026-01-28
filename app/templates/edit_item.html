@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Modifier - Serveur Web</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <img src="{{ url_for('static', filename='Logo.png') }}" alt="Logo" class="logo" />
+      <h1>Modifier un élément</h1>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <form method="post" class="form">
+          <label>
+            Titre
+            <input type="text" name="title" value="{{ item.title }}" />
+            {% if errors.title %}
+              <span class="error">{{ errors.title }}</span>
+            {% endif %}
+          </label>
+          <label>
+            Description
+            <input type="text" name="details" value="{{ item.details }}" />
+            {% if errors.details %}
+              <span class="error">{{ errors.details }}</span>
+            {% endif %}
+          </label>
+          <div class="actions">
+            <button class="btn" type="submit">Enregistrer</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="actions">
+          <form method="get" action="{{ url_for('main.items') }}">
+            <button class="btn" type="submit">Retour</button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

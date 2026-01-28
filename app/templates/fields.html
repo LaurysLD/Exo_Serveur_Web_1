@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Paramètres - Serveur Web</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <img src="{{ url_for('static', filename='Logo.png') }}" alt="Logo" class="logo" />
+      <h1>Zone protégée</h1>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <p>Cette page est un exemple de navigation avec des boutons.</p>
+        <div class="actions">
+          <form method="get" action="{{ url_for('main.items') }}">
+            <button class="btn" type="submit">Voir les éléments</button>
+          </form>
+          <form method="get" action="{{ url_for('main.home') }}">
+            <button class="btn" type="submit">Retour accueil</button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

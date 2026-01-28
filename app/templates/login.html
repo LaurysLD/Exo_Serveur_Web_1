@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Connexion - Serveur Web</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <img src="{{ url_for('static', filename='Logo.png') }}" alt="Logo" class="logo" />
+      <h1>Connexion</h1>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <form method="post" class="form">
+          {% if errors.global %}
+            <span class="error">{{ errors.global }}</span>
+          {% endif %}
+          <label>
+            Identifiant
+            <input type="text" name="username" />
+            {% if errors.username %}
+              <span class="error">{{ errors.username }}</span>
+            {% endif %}
+          </label>
+          <label>
+            Mot de passe
+            <input type="password" name="password" />
+            {% if errors.password %}
+              <span class="error">{{ errors.password }}</span>
+            {% endif %}
+          </label>
+          <div class="actions">
+            <button class="btn" type="submit">Se connecter</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="actions">
+          <form method="get" action="{{ url_for('main.register') }}">
+            <button class="btn" type="submit">Créer un compte</button>
+          </form>
+          <form method="get" action="{{ url_for('main.home') }}">
+            <button class="btn" type="submit">Retour accueil</button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
